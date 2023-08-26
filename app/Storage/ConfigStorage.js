@@ -14,8 +14,7 @@ const isFileExist = async path => {
 }
 
 const saveConfig = async (key, value) => {
-	const isExist = await isFileExist(configPath)
-	if (!isExist) {
+	if (!(await isFileExist(configPath))) {
 		return await promises.writeFile(configPath, JSON.stringify({[key]: value}))
 	}
 	const currentConfigContent = JSON.parse(await promises.readFile(configPath, 'utf-8'))
@@ -23,4 +22,11 @@ const saveConfig = async (key, value) => {
 	return await promises.writeFile(configPath, JSON.stringify(currentConfigContent))
 }
 
-export {saveConfig}
+const getConfig = async key => {
+	if (!(await isFileExist(configPath))) {
+		throw new Error(`Config file does not exist`)
+	}
+	return JSON.parse(await promises.readFile(configPath, 'utf-8'))[key]
+}
+
+export {saveConfig, getConfig}
