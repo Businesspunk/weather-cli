@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  node:
+    build:
+      context: ./docker/dev
+    volumes:
+    - ./app:/app
+    working_dir: /app
