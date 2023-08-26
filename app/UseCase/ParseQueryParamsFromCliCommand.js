@@ -8,10 +8,10 @@ const ParseQueryParamsFromCliCommand = parameters => {
 		}
 		const nextValue = parameters[i + 1]
 		if (nextValue === undefined || nextValue.includes('-')) {
-			parametersKeyValue[currentValue] = true
+			parametersKeyValue[currentValue.slice(1)] = true
 			continue
 		}
-		parametersKeyValue[currentValue] = nextValue
+		parametersKeyValue[currentValue.slice(1)] = nextValue
 	}
 	
 	return parametersKeyValue
