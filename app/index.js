@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import {ParseQueryParamsFromCliCommand} from './UseCase/ParseQueryParamsFromCliCommand.js'
 import {printError, printSuccess, printHelp, printWeather} from './Services/OutputService.js'
 import {saveConfig} from './Storage/ConfigStorage.js'
