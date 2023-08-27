@@ -14,11 +14,24 @@ const printHelp = () => {
 		dedent(
 			`${chalk.bgCyan(' HELP ')}
 			Without parameters - weather output
-			-s [CITY] for setting city
+			-c [CITY] for setting city
 			-h for output help
 			-t [API_KEY] for saving token`
 		)
 	)
 }
 
-export {printError, printSuccess, printHelp}
+const printWeather = (city, temperature, temperatureFeelsLike, airHumidity, windVelocity, description, icon) => {
+	console.log(
+		dedent(
+			`${chalk.bgYellow(' Weather in city', city, '')}
+			${icon}${description}
+			Temperature: ${temperature}°C (feels like ${temperatureFeelsLike}°C)
+			Air humidity: ${airHumidity}%
+			Wind velocity: ${windVelocity} m/s
+			`
+		)
+	)
+}
+
+export {printError, printSuccess, printHelp, printWeather}
